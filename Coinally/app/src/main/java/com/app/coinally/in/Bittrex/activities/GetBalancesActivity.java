@@ -18,7 +18,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 public class GetBalancesActivity extends Activity implements View.OnClickListener {
-    private static final String TAG = GetBalancesActivity.class.getSimpleName();
+   // private static final String TAG = .getSimpleName();
 
     @BindView(R.id.hidezerobalances_checkbox) CheckedTextView _hideZeroBalancesCheckbox;
     @BindView(R.id.recyclerview)
@@ -31,6 +31,8 @@ public class GetBalancesActivity extends Activity implements View.OnClickListene
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.btx_activity_getbalances);
+
+
 
         _adapter = new GetBalancesAdapter(this);
         _adapter.setHideZeroBalances(ApplicationSettings.instance().getHideZeroBalances());
@@ -49,7 +51,7 @@ public class GetBalancesActivity extends Activity implements View.OnClickListene
     @NonNull
     @Override
     protected String getTag() {
-        return TAG;
+        return "tag";
     }
 
     @OnClick(R.id.hidezerobalances_checkbox)

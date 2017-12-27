@@ -20,10 +20,11 @@ import android.view.SubMenu;
 import android.widget.Toast;
 
 
+import com.app.coinally.in.Bittrex.settings.ApplicationSettings;
 import com.app.coinally.in.Fragments.AccountsFragment;
 import com.app.coinally.in.Fragments.HomeFragment;
 import com.app.coinally.in.Fragments.MoreFragment;
-import com.app.coinally.in.Fragments.OrderFragment;
+import com.app.coinally.in.Fragments.WalletFragment;
 import com.app.coinally.in.Utils.BottomNavigationViewHelper;
 import com.app.coinally.in.Utils.MenuCustomFont;
 
@@ -39,6 +40,8 @@ public class LauncherActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tab_layout);
         mcontext = this;
+
+        ApplicationSettings.initialize(this);
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView)
                 findViewById(R.id.navigation);
@@ -76,7 +79,7 @@ public class LauncherActivity extends AppCompatActivity {
                                 selectedFragment = AccountsFragment.newInstance();
                                 break;
                             case R.id.action_item3:
-                                selectedFragment = OrderFragment.newInstance();
+                                selectedFragment = WalletFragment.newInstance();
                                 break;
                             case R.id.action_item4:
                                 selectedFragment = MoreFragment.newInstance();

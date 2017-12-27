@@ -1,14 +1,17 @@
 package com.app.coinally.in.Fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.app.coinally.in.Bittrex.activities.AuthenticationActivity;
 import com.app.coinally.in.R;
 
 import java.util.ArrayList;
@@ -21,7 +24,7 @@ import java.util.List;
 public class AccountsFragment extends Fragment {
     View view;
     Context mcontext;
-
+CardView addac;
     List<TextView> moreScreenOptions;
 
 //    @BindViews(R.id.more_btn_logout)
@@ -48,13 +51,18 @@ public class AccountsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         int j;
         // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.activity_main, container, false);
+        view = inflater.inflate(R.layout.frag_accounts_layout, container, false);
         mcontext = getActivity();
+        addac = view.findViewById(R.id.add_ac_card);
         //ButterKnife.bind(this, view);
 
-
-
-//Custom font for Alert Dialog********************************************************
+        addac.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i =new Intent(mcontext, AuthenticationActivity.class);
+                startActivity(i);
+            }
+        });
 
 
         return view;
