@@ -10,6 +10,8 @@ import android.widget.TextView;
 import com.app.coinally.in.Bittrex.ToastCallback;
 import com.app.coinally.in.Bittrex.settings.ApplicationSettings;
 import com.app.coinally.in.Bittrex.utils.Log;
+import com.app.coinally.in.Databases.TransactionData;
+import com.app.coinally.in.Databases.TransactionOperations;
 import com.app.coinally.in.R;
 import com.corycharlton.bittrexapi.BittrexApiClient;
 import com.corycharlton.bittrexapi.extension.okhttp.OkHttpDownloader;
@@ -29,9 +31,17 @@ public class GetBalancesAdapter extends SelectableAdapter<GetBalancesAdapter.Vie
     private boolean _hideZeroBalances;
     private final ArrayList<Balance> _items = new ArrayList<>();
     private final ArrayList<Balance> _visibleItems = new ArrayList<>();
+    TransactionOperations transactionOperations;
+    TransactionData transactionData;
 
     public GetBalancesAdapter(@NonNull Context context) {
         _context = context;
+
+        //instance of DB ----------------------
+        transactionData = new TransactionData();
+        //opening database here ---------------
+        transactionOperations = new TransactionOperations(context);
+        transactionOperations.open();
     }
 
     @Override
@@ -100,7 +110,26 @@ public class GetBalancesAdapter extends SelectableAdapter<GetBalancesAdapter.Vie
                 _items.clear();
 
                 for (Balance balance : response.result()) {
-                    Log.v("Response : ",balance.currency());
+                    Log.v("Response currency  : ", balance.currency());
+                    Log.v("Response available: ", String.valueOf(balance.available()));
+                    Log.v("Response pending: ", String.valueOf(balance.pending()));
+                    Log.v("Response reserved: ", String.valueOf(balance.reserved()));
+
+                    //setting data ---------------------------------------
+                    transactionData.setCoin_name(balance.currency());
+                    transactionData.setAvailable_qty(String.valueOf(balance.available()));
+                    transactionData.setPending_qty(String.valueOf(balance.pending()));
+                    transactionData.setReserved_qty(String.valueOf(balance.reserved()));
+                    transactionData.setTotal_qty(String.valueOf(balance.total()));
+                    transactionData.setCryptoAddress(balance.cryptoAddress());
+
+                    //adding transaction data to database only if available---------------------------
+                    if (balance.available() > 0 || balance.pending() > 0 || balance.reserved() > 0) {
+
+                        transactionOperations.addTransactionDash(transactionData);
+                    }
+
+
                     _items.add(balance);
                 }
 
@@ -108,14 +137,20 @@ public class GetBalancesAdapter extends SelectableAdapter<GetBalancesAdapter.Vie
             }
         }
     }
+
     // region ViewHolder
     class ViewHolder extends SelectableAdapter.ViewHolder {
 
-        @BindView(R.id.available_textview) TextView availableTextView;
-        @BindView(R.id.currency_textview) TextView currencyTextView;
-        @BindView(R.id.pending_textview) TextView pendingTextView;
-        @BindView(R.id.reserved_textview) TextView reservedTextView;
-        @BindView(R.id.total_textview) TextView totalTextView;
+        @BindView(R.id.available_textview)
+        TextView availableTextView;
+        @BindView(R.id.currency_textview)
+        TextView currencyTextView;
+        @BindView(R.id.pending_textview)
+        TextView pendingTextView;
+        @BindView(R.id.reserved_textview)
+        TextView reservedTextView;
+        @BindView(R.id.total_textview)
+        TextView totalTextView;
 
         ViewHolder(@NonNull View view) {
             super(view);

@@ -15,34 +15,25 @@ public class TransactionDBHandler extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "transaction.db";
     private static final int DATABASE_VERSION = 1;
 
-    public static final String TABLE_HISTORY_BALANCE = "history_balance";
+    public static final String TABLE_WALLET_BALANCE = "wallet_balance";
 
 
-    public static final String COLUMN_HISTORY_id = "id";
-    public static final String COLUMN_HISTORY_yodlee_bank_accountId = "yodlee_bank_accountId";
-    public static final String COLUMN_HISTORY_isAsset = "isAsset";
-    public static final String COLUMN_HISTORY_asOfDate = "asOfDate";
-    public static final String COLUMN_HISTORY_date = "date";
-    public static final String COLUMN_HISTORY_balance_amount = "balance_amount";
-    public static final String COLUMN_HISTORY_balance_currency = "balance_currency";
-    public static final String COLUMN_HISTORY_dataSourceType = "dataSourceType";
-    public static final String COLUMN_HISTORY_account_id = "account_id";
-    public static final String COLUMN_HISTORY_created_at = "created_at";
-    public static final String COLUMN_HISTORY_intervalz = "intervalz";
+    public static final String COLUMN_CURRENCY_NAME = "name";
+    public static final String COLUMN_CURRENCY_address = "address";
+    public static final String COLUMN_CURRENCY__available = "availacle";
+    public static final String COLUMN_CURRENCY__pending = "pending";
+    public static final String COLUMN_CURRENCY__resedrved = "reserved";
+    public static final String COLUMN_CURRENCY__total= "total";
+
 
     private static final String TABLE_CREATE_DASH = "create table "
-            + TABLE_HISTORY_BALANCE + "(" + COLUMN_HISTORY_id
-            + " INTEGER PRIMARY KEY, "
-            + COLUMN_HISTORY_yodlee_bank_accountId + " TEXT, "
-            + COLUMN_HISTORY_isAsset + " INTEGER, "
-            + COLUMN_HISTORY_asOfDate + " TEXT , "
-            + COLUMN_HISTORY_date + " NUMERIC NOT NULL, "
-            + COLUMN_HISTORY_balance_amount + " REAL, "
-            + COLUMN_HISTORY_balance_currency + " TEXT, "
-            + COLUMN_HISTORY_dataSourceType + " TEXT , "
-            + COLUMN_HISTORY_account_id + " INTEGER , "
-            + COLUMN_HISTORY_created_at + " NUMERIC NOT NULL, "
-            + COLUMN_HISTORY_intervalz + " TEXT)";
+            + TABLE_WALLET_BALANCE + "(" + COLUMN_CURRENCY_NAME
+            + " TEXT PRIMARY KEY, "
+            + COLUMN_CURRENCY_address + " TEXT, "
+            + COLUMN_CURRENCY__available + " REAL, "
+            + COLUMN_CURRENCY__pending + " REAL, "
+            + COLUMN_CURRENCY__resedrved + " REAL , "
+            + COLUMN_CURRENCY__total + " REAL)";
 
 
 
@@ -60,22 +51,22 @@ public class TransactionDBHandler extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_HISTORY_BALANCE);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_WALLET_BALANCE);
         db.execSQL(TABLE_CREATE_DASH);
 
         onCreate(db);
     }
     @Override
     public void onOpen(SQLiteDatabase db) {
-        db.execSQL("PRAGMA foreign_keys=ON;");
+       // db.execSQL("PRAGMA foreign_keys=ON;");
         super.onOpen(db);
     }
     @Override
     public void onConfigure(SQLiteDatabase db) {
         super.onConfigure(db);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            db.setForeignKeyConstraintsEnabled(true);
-        }else{ db.execSQL("PRAGMA foreign_keys=ON;");}
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+//            db.setForeignKeyConstraintsEnabled(true);
+//        }else{ db.execSQL("PRAGMA foreign_keys=ON;");}
     }
 
 }
