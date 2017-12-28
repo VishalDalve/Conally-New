@@ -23,6 +23,28 @@
     <color name="layoutbackground">#f2f4f8</color>
 
 
+    <color name="colorbg">#303030</color>
+
+    <color name="primary_light">#B2DFDB</color>
+    <color name="primary_text">#212121</color>
+    <color name="secondary_text">#757575</color>
+    <color name="icons">#FFFFFF</color>
+
+    <!--<color name="grey">#F0F0F0</color>-->
+    <color name="grey">#BDBDBD</color>
+    <color name="bluefaint">#cbf9de</color>
+    <color name="redfaint">#f9cbcb</color>
+    <color name="startRed">#FC3729</color>
+    <color name="endRed">#EA8662</color>
+    <color name="startGreen">#24FF1B</color>
+    <color name="endGreen">#1DFF8D</color>
+
+    <color name="color1">#21daae</color>
+    <color name="colorHeaderText">#fff</color>
+    <color name="color3">#db5049</color>
+    <color name="colorTableBack">#2d48c1</color>
+    <color name="colorBackground">#1d2b56</color>
+
     <color name="highlight">#30000000</color>
 
     <color name="divider">#B6B6B6</color>

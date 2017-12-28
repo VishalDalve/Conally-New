@@ -25,4 +25,26 @@
     <string name="label_available">Available:</string>
     <string name="hide_zero_balances">Hide zero balances</string>
 
+    <string name="show_hide_cols">Show/Hide columns</string>
+    <string name="change_7_days">Change In \n % 7 days</string>
+    <string name="change_24hr">Change In \n  % 24hr</string>
+    <string name="price_diff_30mins">Price Diff \n 30 min</string>
+    <string name="price_diff_15mins">Price Diff \n 15 min</string>
+    <string name="price_diff_1hr">Price Diff \n 1 hr</string>
+    <string name="price_diff_3hr">Price Diff \n 3 hr</string>
+    <string name="market_cap">Market \nCapital</string>
+
+    <string-array name="column_names">
+        <item>Price</item>
+        <item>24h Volume</item>
+        <item>Market Capital</item>
+        <item>BTC Last</item>
+        <item>Price Diff 15 min</item>
+        <item>Price Diff 30 min</item>
+        <item>Price Diff 1 hr</item>
+        <item>Price Diff 3 hr</item>
+        <item>Change in % 24hr</item>
+        <item>Change in % 7 days</item>
+    </string-array>
+
 </resources>

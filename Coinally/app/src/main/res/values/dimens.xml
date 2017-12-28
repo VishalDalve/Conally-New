@@ -14,4 +14,23 @@
 
     <dimen name="divider_height">0.5dp</dimen>
 
+    <dimen name="nav_header_vertical_spacing">16dp</dimen>
+    <dimen name="nav_header_height">160dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="table_width">120dp</dimen>
+    <dimen name="table_height">70dp</dimen>
+    <dimen name="table_cell_height">60dp</dimen>
+    <dimen name="table_divider_height">0.5dp</dimen>
+    <dimen name="width_col1">145dp</dimen>
+    <dimen name="width_col2">200dp</dimen>
+    <dimen name="width_col3">140dp</dimen>
+    <dimen name="width_col4">150dp</dimen>
+    <dimen name="width_col5">200dp</dimen>
+    <dimen name="width_col6">150dp</dimen>
+    <dimen name="width_col7">150dp</dimen>
+    <dimen name="width_col8">150dp</dimen>
+    <dimen name="width_col9">150dp</dimen>
+    <dimen name="width_col10">150dp</dimen>
+    <dimen name="width_col11">160dp</dimen>
+
 </resources>

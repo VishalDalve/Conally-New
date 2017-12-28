@@ -14,5 +14,20 @@
         <item name="android:layout_height">@dimen/divider_height</item>
     </style>
 
+    <style name="style_table_cell">
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/colorHeaderText</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:maxLines">1</item>
+    </style>
 
+    <style name="style_header">
+        <item name="android:gravity">center</item>
+        <item name="android:background">@color/colorBackground</item>
+        <item name="android:textColor">@color/colorHeaderText</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:minLines">2</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>

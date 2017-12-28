@@ -42,4 +42,11 @@ dependencies {
     compile 'com.squareup.okhttp3:okhttp:3.8.1'
     //implementation project(':okhttp')
     compile project(':okhttp')
+
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.airbnb.android:lottie:2.2.5'
+    compile('io.socket:socket.io-client:0.8.3') {
+        exclude group: 'org.json', module: 'json'
+    }
 }
